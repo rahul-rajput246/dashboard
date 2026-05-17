@@ -27,7 +27,7 @@ const RegisterPage = () => {
       <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-violet-300/20 blur-3xl" />
       <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-200/20 blur-3xl" />
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col gap-8">
         {/* TOP */}
         <div>
           <span className="inline-flex rounded-full bg-violet-100 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-700">
