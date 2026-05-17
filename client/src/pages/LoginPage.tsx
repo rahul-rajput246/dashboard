@@ -50,7 +50,7 @@ const LoginPage = () => {
         </div>
 
         {/* DEMO BOX */}
-        <div className="mt-6 rounded-2xl border border-violet-100 bg-gradient-to-r from-violet-50 to-indigo-50 p-4">
+        <div className="mt-6 rounded-2xl border border-violet-100 bg-gradient-to-r from-violet-50 to-indigo-50">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-600">
             Demo Access
           </p>
