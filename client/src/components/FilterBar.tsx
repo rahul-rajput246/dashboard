@@ -26,7 +26,7 @@ const FilterBar = ({
   exportRows,
 }: FilterBarProps) => {
   return (
-    <div className="rounded-[30px] border border-white/70 bg-white/75 p-4 shadow-[0_10px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl sm:p-5 lg:p-6">
+    <div className="rounded-[30px] border border-white/70 bg-white p-4 shadow-[0_10px_40px_rgba(0,0,0,0.05)] sm:p-5 lg:p-6">
       {/* TOP */}
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>

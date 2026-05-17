@@ -8,7 +8,7 @@ interface StatCardProps {
 }
 
 const StatCard = ({ label, value, hint, icon }: StatCardProps) => (
-  <div className="h-full rounded-[28px] border border-white/80 bg-white/90 p-5 shadow-panel backdrop-blur">
+  <div className="h-full rounded-[28px] border border-white/80 bg-white p-5 shadow-panel">
     <div className="flex items-start justify-between gap-4">
       <div>
         <p className="text-xs uppercase tracking-[0.24em] text-ink/45">{label}</p>

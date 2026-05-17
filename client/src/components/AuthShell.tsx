@@ -15,16 +15,12 @@ const AuthShell = ({
   children,
 }: AuthShellProps) => (
   <div className="min-h-screen overflow-hidden bg-gradient-to-br from-slate-100 via-violet-50 to-cyan-50 px-3 py-3 sm:px-5 sm:py-5 lg:px-8 lg:py-8">
-    {/* BACKGROUND BLUR */}
-    <div className="pointer-events-none absolute left-0 top-0 h-72 w-72 rounded-full bg-violet-300/20 blur-3xl" />
-    <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl" />
+    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(167,139,250,0.12),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(103,232,249,0.12),transparent_24%)]" />
 
-    <div className="relative mx-auto grid min-h-[calc(100vh-1.5rem)] max-w-7xl overflow-hidden rounded-[32px] border border-white/60 bg-white/70 shadow-[0_20px_80px_rgba(0,0,0,0.08)] backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] lg:grid-cols-[1.05fr_0.95fr]">
+    <div className="relative mx-auto grid min-h-[calc(100vh-1.5rem)] max-w-7xl overflow-hidden rounded-[32px] border border-white/70 bg-white shadow-[0_20px_80px_rgba(0,0,0,0.08)] sm:min-h-[calc(100vh-2.5rem)] lg:grid-cols-[1.05fr_0.95fr]">
       {/* LEFT SIDE */}
       <section className="relative hidden flex-col overflow-hidden bg-slate-950 p-6 text-white sm:p-8 lg:flex lg:p-10 xl:p-14">
-        {/* DECORATIVE */}
-        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.16),transparent_20%),radial-gradient(circle_at_bottom_left,rgba(34,211,238,0.12),transparent_24%)]" />
 
         <div className="relative z-10">
           {/* LOGO */}
@@ -61,7 +57,7 @@ const AuthShell = ({
           </div>
 
           {/* FEATURE CARD */}
-          <div className="mt-10 rounded-[28px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+          <div className="mt-10 rounded-[28px] border border-white/10 bg-white/10 p-5">
             <div className="flex items-start gap-4">
               <div className="rounded-2xl bg-violet-500/15 p-3 text-violet-300">
                 <ShieldCheck size={22} />
@@ -123,7 +119,7 @@ const AuthShell = ({
       </section>
 
       {/* RIGHT SIDE */}
-      <section className="relative flex min-h-screen items-center justify-center bg-white/70 p-4 sm:p-6 lg:min-h-0 lg:bg-white/40 lg:p-10">
+      <section className="relative flex min-h-screen items-center justify-center bg-slate-50/70 p-4 sm:p-6 lg:min-h-0 lg:bg-slate-50 lg:p-10">
         <div className="w-full max-w-md lg:max-w-lg">
           {children}
         </div>

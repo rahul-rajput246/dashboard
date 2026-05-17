@@ -131,12 +131,10 @@ const DashboardPage = () => {
   return (
     <AppLayout>
       <section className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[#f8fafc] via-[#eef2ff] to-[#f8fafc] p-2 sm:p-4 lg:p-5">
-        {/* Decorative Blur */}
-        <div className="absolute -top-20 right-0 h-72 w-72 rounded-full bg-violet-300/30 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-cyan-200/30 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(196,181,253,0.18),transparent_18%),radial-gradient(circle_at_bottom_left,rgba(165,243,252,0.14),transparent_20%)]" />
 
         {/* HERO */}
-        <div className="relative rounded-[28px] border border-white/60 bg-white/70 p-4 shadow-[0_10px_50px_rgba(0,0,0,0.06)] backdrop-blur-xl sm:p-6 lg:p-8">
+        <div className="relative rounded-[28px] border border-white/70 bg-white p-4 shadow-[0_10px_50px_rgba(0,0,0,0.06)] sm:p-6 lg:p-8">
           <div className="grid gap-6 2xl:grid-cols-[1.5fr_0.7fr] 2xl:items-end">
             {/* LEFT */}
             <div className="min-w-0">
@@ -200,7 +198,7 @@ const DashboardPage = () => {
                   </h2>
                 </div>
 
-                <div className="rounded-2xl bg-white/10 p-3 backdrop-blur">
+                <div className="rounded-2xl bg-white/10 p-3">
                   <UsersRound size={28} />
                 </div>
               </div>
@@ -266,7 +264,7 @@ const DashboardPage = () => {
 
         {/* FILTER BAR */}
         <div className="relative mt-6">
-          <div className="rounded-[24px] border border-white/70 bg-white/60 shadow-lg backdrop-blur-xl">
+          <div className="rounded-[24px] border border-white/70 bg-white shadow-lg">
             <FilterBar
               filters={filters}
               onFilterChange={handleFilterChange}
@@ -277,7 +275,7 @@ const DashboardPage = () => {
         </div>
 
         {/* TABLE */}
-       <div className="relative mt-6 overflow-hidden rounded-[28px] border border-white/70 bg-white/60 shadow-[0_10px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl">
+       <div className="relative mt-6 overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
           {loading ? (
             <LoadingBlock />
           ) : leads.length === 0 ? (

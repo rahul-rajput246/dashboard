@@ -22,10 +22,8 @@ const RegisterPage = () => {
     subtitle="Register a sales account, access the dashboard instantly, and manage your pipeline through a modern CRM-inspired experience."
     accent="All newly registered accounts are automatically assigned the sales role."
   >
-    <div className="relative w-full max-w-md overflow-hidden rounded-[32px] border border-white/60 bg-white/75 p-5 shadow-[0_15px_60px_rgba(0,0,0,0.08)] backdrop-blur-2xl sm:p-7">
-      {/* Decorative Gradient */}
-      <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-violet-300/20 blur-3xl" />
-      <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-200/20 blur-3xl" />
+    <div className="relative w-full max-w-md overflow-hidden rounded-[32px] border border-white/70 bg-white p-5 shadow-[0_15px_60px_rgba(0,0,0,0.08)] sm:p-7">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(196,181,253,0.18),transparent_18%),radial-gradient(circle_at_bottom_left,rgba(165,243,252,0.14),transparent_20%)]" />
 
       <div className="relative z-10 flex flex-col gap-8"> 
         {/* TOP */}

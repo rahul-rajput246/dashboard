@@ -11,7 +11,7 @@ interface LeadTableProps {
 }
 
 const LeadTable = ({ leads, canDelete, onEdit, onDelete }: LeadTableProps) => (
-  <div className="overflow-hidden rounded-[30px] border border-white/80 bg-white/90 shadow-panel backdrop-blur">
+  <div className="overflow-hidden rounded-[30px] border border-white/80 bg-white shadow-panel">
     <div className="hidden overflow-x-auto md:block">
       <table className="min-w-full">
         <thead className="bg-sand">
