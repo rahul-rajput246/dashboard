@@ -22,7 +22,7 @@ const AuthShell = ({ title, subtitle, accent, children }: AuthShellProps) => (
             {subtitle}
           </p>
         </div>
-        <div className="mt-6 rounded-[24px] bg-white/6 p-4 sm:mt-8 sm:rounded-[32px] sm:p-6">
+        <div className="mt-6 rounded-[24px] bg-white/6 sm:mt-8 sm:rounded-[32px]">
           <p className="text-xs uppercase tracking-[0.2em] text-mint sm:text-sm sm:tracking-[0.24em]">
             Why this feels useful
           </p>
