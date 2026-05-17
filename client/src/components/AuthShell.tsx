@@ -21,7 +21,7 @@ const AuthShell = ({
 
     <div className="relative mx-auto grid min-h-[calc(100vh-1.5rem)] max-w-7xl overflow-hidden rounded-[32px] border border-white/60 bg-white/70 shadow-[0_20px_80px_rgba(0,0,0,0.08)] backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] lg:grid-cols-[1.05fr_0.95fr]">
       {/* LEFT SIDE */}
-      <section className="relative flex flex-col overflow-hidden bg-slate-950 p-6 text-white sm:p-8 lg:p-10 xl:p-14">
+      <section className="relative hidden flex-col overflow-hidden bg-slate-950 p-6 text-white sm:p-8 lg:flex lg:p-10 xl:p-14">
         {/* DECORATIVE */}
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
@@ -123,8 +123,8 @@ const AuthShell = ({
       </section>
 
       {/* RIGHT SIDE */}
-      <section className="relative flex items-center justify-center bg-white/40 p-4 sm:p-6 lg:p-10">
-        <div className="w-full max-w-md">
+      <section className="relative flex min-h-screen items-center justify-center bg-white/70 p-4 sm:p-6 lg:min-h-0 lg:bg-white/40 lg:p-10">
+        <div className="w-full max-w-md lg:max-w-lg">
           {children}
         </div>
       </section>
