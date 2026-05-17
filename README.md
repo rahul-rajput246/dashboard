@@ -209,6 +209,32 @@ docker compose up --build
 
 ## Screenshots
 
+![Login Page](./screenshots/login.png)
+
+![Register Page](./screenshots/register.png)
+
+![Admin Dashboard 1](./screenshots/adminDashboard1.png)
+
+![Admin Dashboard 2](./screenshots/adminDashboard2.png)
+
+![Sales Dashboard 1](./screenshots/salesDashboard1.png)
+
+![Sales Dashboard 2](./screenshots/salesDashboard2.png)
+
+![Responsive Mobile 1](./screenshots/responsive1.png)
+
+![Responsive Mobile 2](./screenshots/responsive2.png)
+
+![Responsive Mobile 3](./screenshots/responsive3.png)
+
+![Responsive Mobile 4](./screenshots/responsive4.png)
+
+![Responsive Mobile 5](./screenshots/responsive5.png)
+
+![New Lead Create 1](./screenshots/newLead1.png)
+
+![New Lead Create 2](./screenshots/newLead2.png)
+
 ### Live Pages
 
 - Login: `https://dashboard-omega-bice-60.vercel.app/login`
