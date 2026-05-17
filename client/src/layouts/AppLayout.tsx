@@ -14,8 +14,8 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   return (
     <div className="min-h-screen bg-hero-grid px-3 py-3 sm:px-4 sm:py-5 md:px-6 lg:px-8">
-      <div className="mx-auto grid min-h-[calc(100vh-1.5rem)] max-w-[1600px] gap-4 sm:min-h-[calc(100vh-2.5rem)] sm:gap-6 lg:grid-cols-[300px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)] 2xl:grid-cols-[340px_minmax(0,1fr)]">
-        <aside className="rounded-[28px] bg-ink px-4 py-5 text-white shadow-panel sm:rounded-[36px] sm:px-6 sm:py-7 lg:sticky lg:top-5 lg:h-[calc(100vh-2.5rem)] lg:overflow-y-auto">
+      <div className="mx-auto grid max-w-[1600px] gap-4 sm:gap-6 lg:grid-cols-[300px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)] 2xl:grid-cols-[340px_minmax(0,1fr)]">
+        <aside className="self-start rounded-[28px] bg-ink px-4 py-5 text-white shadow-panel sm:rounded-[36px] sm:px-6 sm:py-7 lg:sticky lg:top-5 lg:max-h-[calc(100vh-2.5rem)] lg:overflow-y-auto">
           <div className="rounded-[24px] bg-white/8 p-4 sm:rounded-[28px] sm:p-5">
             <div className="flex items-center gap-3">
               <div className="rounded-2xl bg-mint p-3 text-moss">
