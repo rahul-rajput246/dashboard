@@ -19,7 +19,7 @@ const config: Config = {
           "radial-gradient(circle at top left, rgba(95, 184, 138, 0.22), transparent 28%), radial-gradient(circle at bottom right, rgba(179, 86, 42, 0.18), transparent 22%)",
       },
       fontFamily: {
-        display: ["Georgia", "Cambria", "Times New Roman", "serif"],
+        display: ["Sora", "sans-serif"],
       },
     },
   },
