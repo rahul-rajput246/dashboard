@@ -25,17 +25,17 @@ const LoginPage = () => {
   <AuthShell
     title="Lead management with a modern sales experience."
     subtitle="Track prospects, manage pipeline activity, and organize your workflow through a clean and responsive dashboard built with the MERN stack."
-    accent="Demo Admin: admin@smartleads.local / Rahul@2005"
+    accent="Demo Admin Access Included"
   >
-    <div className="relative w-full max-w-md overflow-hidden rounded-[32px] border border-white/60 bg-white/75 p-5 shadow-[0_15px_60px_rgba(0,0,0,0.08)] backdrop-blur-2xl sm:p-7">
-      {/* Decorative Gradient */}
+    <div className="relative overflow-hidden rounded-[32px] border border-white/70 bg-white/80 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.08)] backdrop-blur-2xl sm:p-8">
+      {/* DECORATIVE BLUR */}
       <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-violet-300/20 blur-3xl" />
-      <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-200/20 blur-3xl" />
+      <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-cyan-300/20 blur-3xl" />
 
       <div className="relative z-10">
-        {/* TOP */}
+        {/* HEADER */}
         <div>
-          <span className="inline-flex rounded-full bg-violet-100 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-700">
+          <span className="inline-flex items-center rounded-full bg-violet-100 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-700">
             Welcome Back
           </span>
 
@@ -44,25 +44,41 @@ const LoginPage = () => {
           </h2>
 
           <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-[15px]">
-            Sign in to access your lead pipeline, manage customer
-            interactions, and monitor sales activity from anywhere.
+            Access your dashboard, manage leads, track conversions,
+            and organize your pipeline from anywhere.
           </p>
         </div>
 
-        {/* DEMO BOX */}
-        <div className="mt-6 rounded-2xl border border-violet-100 bg-gradient-to-r from-violet-50 to-indigo-50">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-600">
-            Demo Access
-          </p>
+        {/* DEMO ACCESS */}
+        <div className="mt-7 rounded-[24px] border border-violet-100 bg-gradient-to-r from-violet-50 to-indigo-50 p-5">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-600">
+                Demo Credentials
+              </p>
 
-          <div className="mt-3 space-y-1 text-sm text-slate-700">
-            <p>
-              <span className="font-semibold">Email:</span>{" "}
+              <p className="mt-1 text-sm text-slate-500">
+                Use the seeded admin account
+              </p>
+            </div>
+
+            <div className="rounded-full bg-violet-500/10 px-3 py-1 text-xs font-semibold text-violet-700">
+              Admin
+            </div>
+          </div>
+
+          <div className="mt-4 space-y-2 rounded-2xl bg-white/70 p-4">
+            <p className="text-sm text-slate-700">
+              <span className="font-semibold text-slate-900">
+                Email:
+              </span>{" "}
               admin@smartleads.local
             </p>
 
-            <p>
-              <span className="font-semibold">Password:</span>{" "}
+            <p className="text-sm text-slate-700">
+              <span className="font-semibold text-slate-900">
+                Password:
+              </span>{" "}
               Rahul@2005
             </p>
           </div>
@@ -70,7 +86,7 @@ const LoginPage = () => {
 
         {/* FORM */}
         <form
-          className="mt-7 space-y-4"
+          className="mt-8 space-y-5"
           onSubmit={handleSubmit(async (values) => {
             try {
               const response = await login(values);
@@ -83,7 +99,9 @@ const LoginPage = () => {
                 (location.state as { from?: string } | null)?.from || "/"
               );
             } catch (error) {
-              toast.error("Login failed. Check your credentials.");
+              toast.error(
+                "Login failed. Check your credentials."
+              );
             }
           })}
         >
@@ -96,16 +114,25 @@ const LoginPage = () => {
             <input
               {...register("email", { required: true })}
               className="h-14 w-full rounded-2xl border border-slate-200 bg-white/90 px-4 text-sm text-slate-800 shadow-sm outline-none transition-all duration-200 placeholder:text-slate-400 focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
-              placeholder="Enter your email"
+              placeholder="Enter your email address"
               type="email"
             />
           </div>
 
           {/* PASSWORD */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-slate-700">
-              Password
-            </label>
+            <div className="mb-2 flex items-center justify-between">
+              <label className="text-sm font-medium text-slate-700">
+                Password
+              </label>
+
+              <button
+                type="button"
+                className="text-xs font-medium text-violet-600 transition hover:text-violet-700"
+              >
+                Forgot Password?
+              </button>
+            </div>
 
             <input
               {...register("password", { required: true })}
@@ -121,20 +148,24 @@ const LoginPage = () => {
             disabled={formState.isSubmitting}
             className="flex h-14 w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition-all duration-300 hover:scale-[1.01] hover:shadow-violet-500/30 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {formState.isSubmitting ? "Signing In..." : "Sign In"}
+            {formState.isSubmitting
+              ? "Signing In..."
+              : "Sign In"}
           </button>
         </form>
 
         {/* FOOTER */}
-        <p className="mt-6 text-center text-sm text-slate-600">
-          Don&apos;t have an account?{" "}
-          <Link
-            to="/register"
-            className="font-semibold text-violet-600 transition hover:text-violet-700"
-          >
-            Create one
-          </Link>
-        </p>
+        <div className="mt-7 border-t border-slate-200 pt-5">
+          <p className="text-center text-sm text-slate-600">
+            Don&apos;t have an account?{" "}
+            <Link
+              to="/register"
+              className="font-semibold text-violet-600 transition hover:text-violet-700"
+            >
+              Create one
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   </AuthShell>

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { BarChart3, ShieldCheck, Sparkles } from "lucide-react";
 
 interface AuthShellProps {
   title: string;
@@ -7,34 +8,125 @@ interface AuthShellProps {
   children: ReactNode;
 }
 
-const AuthShell = ({ title, subtitle, accent, children }: AuthShellProps) => (
-  <div className="min-h-screen bg-hero-grid">
-    <div className="mx-auto grid min-h-[calc(100vh-1.5rem)] max-w-6xl overflow-hidden rounded-[28px] bg-white shadow-panel sm:min-h-[calc(100vh-3rem)] sm:rounded-[40px] lg:grid-cols-[1.1fr_0.9fr]">
-      <section className="flex flex-col bg-ink p-5 text-white sm:p-8 md:p-10">
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.24em] text-white/50 sm:text-xs sm:tracking-[0.28em]">
-            Smart Leads Assignment
-          </p>
-          <h1 className="mt-4 max-w-md font-display text-3xl leading-tight sm:mt-5 sm:text-5xl">
-            {title}
-          </h1>
-          <p className="mt-4 max-w-lg text-sm leading-6 text-white/72 sm:mt-5 sm:text-base sm:leading-7">
-            {subtitle}
-          </p>
+const AuthShell = ({
+  title,
+  subtitle,
+  accent,
+  children,
+}: AuthShellProps) => (
+  <div className="min-h-screen overflow-hidden bg-gradient-to-br from-slate-100 via-violet-50 to-cyan-50 px-3 py-3 sm:px-5 sm:py-5 lg:px-8 lg:py-8">
+    {/* BACKGROUND BLUR */}
+    <div className="pointer-events-none absolute left-0 top-0 h-72 w-72 rounded-full bg-violet-300/20 blur-3xl" />
+    <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl" />
+
+    <div className="relative mx-auto grid min-h-[calc(100vh-1.5rem)] max-w-7xl overflow-hidden rounded-[32px] border border-white/60 bg-white/70 shadow-[0_20px_80px_rgba(0,0,0,0.08)] backdrop-blur-2xl sm:min-h-[calc(100vh-2.5rem)] lg:grid-cols-[1.05fr_0.95fr]">
+      {/* LEFT SIDE */}
+      <section className="relative flex flex-col justify-between overflow-hidden bg-slate-950 p-6 text-white sm:p-8 lg:p-10 xl:p-14">
+        {/* DECORATIVE */}
+        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+
+        <div className="relative z-10">
+          {/* LOGO */}
+          <div className="flex items-center gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-500 shadow-lg shadow-violet-500/30">
+              <BarChart3 size={28} />
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-[0.24em] text-white/45">
+                Smart Leads
+              </p>
+
+              <h2 className="mt-1 text-2xl font-semibold">
+                Dashboard
+              </h2>
+            </div>
+          </div>
+
+          {/* HERO */}
+          <div className="mt-10">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200">
+              <Sparkles size={14} />
+              Internship Assignment Project
+            </span>
+
+            <h1 className="mt-6 max-w-xl font-display text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl xl:text-6xl">
+              {title}
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
+              {subtitle}
+            </p>
+          </div>
+
+          {/* FEATURE CARD */}
+          <div className="mt-10 rounded-[28px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+            <div className="flex items-start gap-4">
+              <div className="rounded-2xl bg-violet-500/15 p-3 text-violet-300">
+                <ShieldCheck size={22} />
+              </div>
+
+              <div>
+                <p className="text-xs uppercase tracking-[0.18em] text-violet-300">
+                  Why This Project Stands Out
+                </p>
+
+                <h3 className="mt-2 text-2xl font-semibold leading-tight text-white">
+                  {accent}
+                </h3>
+
+                <p className="mt-4 max-w-lg text-sm leading-7 text-white/70">
+                  Built with authentication, role-based access,
+                  responsive UI, protected routes, debounced
+                  search, filtering, pagination, CSV export,
+                  Docker support, and deployment-ready
+                  architecture.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="mt-6 rounded-[24px] bg-white/6 sm:mt-8 sm:rounded-[32px]">
-          <p className="text-xs uppercase tracking-[0.2em] text-mint sm:text-sm sm:tracking-[0.24em]">
-            Why this feels useful
-          </p>
-          <p className="mt-3 text-lg font-semibold leading-7 sm:text-2xl">{accent}</p>
-          <p className="mt-3 max-w-md text-sm leading-6 text-white/72">
-            This build includes auth, role-based access, full CRUD, filters, debounced search,
-            pagination, CSV export, Docker support, and a mobile-friendly dashboard experience.
-          </p>
+
+        {/* FOOTER */}
+        <div className="relative z-10 mt-10 flex flex-wrap gap-3">
+          <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <p className="text-xs uppercase tracking-[0.16em] text-white/45">
+              Frontend
+            </p>
+
+            <p className="mt-1 text-sm font-medium">
+              React + TypeScript
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <p className="text-xs uppercase tracking-[0.16em] text-white/45">
+              Backend
+            </p>
+
+            <p className="mt-1 text-sm font-medium">
+              Node + Express
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <p className="text-xs uppercase tracking-[0.16em] text-white/45">
+              Database
+            </p>
+
+            <p className="mt-1 text-sm font-medium">
+              MongoDB Atlas
+            </p>
+          </div>
         </div>
       </section>
-      <section className="flex items-center justify-center bg-sand p-4 sm:p-6 md:p-10">
-        {children}
+
+      {/* RIGHT SIDE */}
+      <section className="relative flex items-center justify-center bg-white/40 p-4 sm:p-6 lg:p-10">
+        <div className="w-full max-w-md">
+          {children}
+        </div>
       </section>
     </div>
   </div>
