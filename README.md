@@ -1,31 +1,54 @@
 # Smart Leads Dashboard
 
-Smart Leads Dashboard is a full-stack lead management application built with the MERN ecosystem. I designed it as the kind of internship project I would want to submit: practical, cleanly structured, and focused on solving a real business workflow instead of only showcasing UI.
+Smart Leads Dashboard is a production-style MERN lead
+management system built with TypeScript, JWT authentication, role-based access control, and responsive dashboard tools for managing customer leads efficiently.
 
-The app helps a small sales team manage incoming leads, track pipeline status, search and filter records quickly, and export data when needed. It includes authentication, role-based permissions, responsive design, and deployment-ready configuration for modern hosting platforms.
+## Project Overview
 
-## Why I Built This
+This project was built to match the assignment requirements while still feeling polished and production-aware. It includes:
 
-For an internship-level project, I wanted something that demonstrates more than CRUD screens. This project highlights:
+- JWT-based authentication
+- bcrypt password hashing
+- role-based authorization
+- full lead CRUD APIs
+- search, filter, sort, and pagination
+- CSV export
+- responsive UI
+- Docker support
+- deployment-ready frontend and backend setup
 
-- full-stack product thinking from database to UI
-- authentication and authorization
-- clean API design with validation and error handling
-- responsive frontend development
-- deployment awareness with Docker, Render, and Vercel support
+## Live Deployment
 
-## Highlights
+- Frontend: `https://dashboard-omega-bice-60.vercel.app/`
+- Backend: `https://smart-leads-dashboard-api.onrender.com`
+- Health check: `https://smart-leads-dashboard-api.onrender.com/api/health`
 
-- JWT-based authentication with protected routes
-- role-based access control with admin-only delete
-- create, edit, view, and manage sales leads
-- debounced search by name or email
-- filter by lead status and source
-- sort by latest or oldest
-- pagination for scalable browsing
-- CSV export for reporting and handoff workflows
-- MongoDB support with an in-memory fallback for local development
-- responsive dashboard experience for desktop and mobile
+## Features
+
+### Authentication
+
+- Register account
+- Login account
+- Persisted auth with protected routes
+- Role support for `admin` and `sales`
+
+### Lead Management
+
+- Create lead
+- Read leads list
+- View single lead through API
+- Edit lead
+- Delete lead as admin only
+
+### Dashboard Tools
+
+- Debounced search by lead name or email
+- Filter by lead status
+- Filter by lead source
+- Sort by latest or oldest
+- Pagination
+- CSV export
+- Loading and empty states
 
 ## Tech Stack
 
@@ -35,74 +58,76 @@ For an internship-level project, I wanted something that demonstrates more than 
 - Vite
 - TypeScript
 - Tailwind CSS
+- Axios
+- React Router DOM
 - Zustand
 - React Hook Form
-- Axios
+- React CSV
 
 ### Backend
 
 - Node.js
 - Express
 - TypeScript
-- MongoDB with Mongoose
+- MongoDB Atlas
+- Mongoose
 - JWT
-- bcrypt
+- bcryptjs
 - express-validator
 
 ## Project Structure
 
 ```text
-dashboard/
-|-- client/   # React frontend
-|-- server/   # Express backend
-|-- docker-compose.yml
-|-- render.yaml
+smart-leads-dashboard/
+|-- client/
+|-- server/
+|-- .env.example
 `-- README.md
 ```
 
-## Core Features
+## Environment Variables
 
-### Authentication
+This repo includes:
 
-- user registration and login
-- JWT-protected API routes
-- persisted auth flow for dashboard access
+- [server/.env.example](/C:/Users/Dell/dashboard/server/.env.example)
+- [client/.env.example](/C:/Users/Dell/dashboard/client/.env.example)
+- [.env.example](/C:/Users/Dell/dashboard/.env.example)
 
-### Lead Management
+### Server
 
-- add new leads
-- edit existing leads
-- delete leads as admin
-- track lead status and source
+```env
+PORT=5000
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_jwt_secret_here
+ADMIN_NAME=Admin User
+ADMIN_EMAIL=admin@smartleads.local
+ADMIN_PASSWORD=your_admin_password_here
+CLIENT_URL=http://localhost:5173
+CLIENT_URLS=
+ALLOW_VERCEL_PREVIEWS=true
+```
 
-### Productivity Features
+### Client
 
-- debounced search
-- filtering and sorting
-- paginated listing
-- CSV export
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
-## API Overview
+## Demo Credentials
 
-### Auth Routes
+### Admin
+Email: admin@example.com
+Password: Rahul@2005
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/auth/me`
+## Architecture
 
-### Lead Routes
+Client (React + Vite)
+    ↓
+REST API (Express + TypeScript)
+    ↓
+MongoDB Atlas
 
-- `GET /api/leads`
-- `GET /api/leads/:id`
-- `POST /api/leads`
-- `PUT /api/leads/:id`
-- `DELETE /api/leads/:id`
-
-### Health Route
-
-- `GET /api/health`
-
-## Local Setup
+## Installation Steps
 
 ### 1. Install dependencies
 
@@ -111,62 +136,60 @@ npm --prefix server install
 npm --prefix client install
 ```
 
-### 2. Create environment files
+### 2. Copy env files
 
-Create `server/.env`:
+Create:
 
-```env
-PORT=5000
-MONGO_URI=mongodb+srv://rahulrajput20112005_db_user:SmartLeads12345@cluster0.dcxhfyz.mongodb.net/smartleads?
-JWT_SECRET=your_jwt_secret_here
-ADMIN_NAME=Admin User
-ADMIN_EMAIL=admin@smartleads.local
-ADMIN_PASSWORD=Rahul@2005
-CLIENT_URL=https://dashboard-omega-bice-60.vercel.app/
-```
+- `server/.env`
+- `client/.env`
 
-Create `client/.env`:
+using the included `.env.example` files.
 
-```env
-VITE_API_URL=https://smart-leads-dashboard-api.onrender.com/api
-```
-
-Notes:
-
-- if `MONGO_URI` is empty, the backend uses `mongodb-memory-server` for local development
-- for persistent data, use a real MongoDB connection string
-
-### 3. Run the backend
+### 3. Start backend
 
 ```bash
 npm --prefix server run dev
 ```
 
-### 4. Run the frontend
+### 4. Start frontend
 
 ```bash
 npm --prefix client run dev
 ```
 
-Live App URLs:
+### 5. Open the app
 
-- frontend: `https://dashboard-omega-bice-60.vercel.app/`
-- backend: `https://smart-leads-dashboard-api.onrender.com`
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:5000`
 
-Local Host App URLs:
+## API Routes
 
-- frontend: `http://localhost:5173`
-- backend: `http://localhost:5000`
+### Auth
 
-## Build
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/auth/me`
 
-```bash
-npm run build
-```
+### Leads
 
-## Docker
+- `GET /api/leads`
+- `GET /api/leads/:id`
+- `POST /api/leads`
+- `PUT /api/leads/:id`
+- `DELETE /api/leads/:id`
 
-To run the full stack with Docker:
+### Utility
+
+- `GET /api/health`
+
+## Docker Setup
+
+The project includes:
+
+- [docker-compose.yml](/C:/Users/Dell/dashboard/docker-compose.yml)
+- [server/Dockerfile](/C:/Users/Dell/dashboard/server/Dockerfile)
+
+Run with:
 
 ```bash
 docker compose up --build
@@ -174,31 +197,43 @@ docker compose up --build
 
 ## Deployment
 
-This repository is structured for:
+### Frontend
 
-- frontend deployment on Vercel
-- backend deployment on Render
+- Vercel
+- Config file: [client/vercel.json](/C:/Users/Dell/dashboard/client/vercel.json)
 
-The included [render.yaml](/C:/Users/Dell/dashboard/render.yaml) and [client/vercel.json](/C:/Users/Dell/dashboard/client/vercel.json) help streamline deployment.
+### Backend
 
-## What This Project Demonstrates
+- Render
+- Blueprint file: [render.yaml](/C:/Users/Dell/dashboard/render.yaml)
 
-From an internship perspective, this project shows that I can:
+## Screenshots
 
-- build a complete full-stack application
-- organize code into maintainable frontend and backend layers
-- handle auth, validation, and role-based permissions
-- think about developer experience and deployment early
-- ship a product that is both functional and presentable
+### Live Pages
 
-## Future Improvements
+- Login: `https://dashboard-omega-bice-60.vercel.app/login`
+- Register: `https://dashboard-omega-bice-60.vercel.app/register`
+- Dashboard: sign in from the login page to access the protected dashboard
 
-- analytics widgets for conversion tracking
-- activity history for lead updates
-- unit and integration test coverage
-- bulk lead import
-- team assignment workflows
+## Assignment Checklist Match
 
-## Closing Note
+- TypeScript everywhere
+- JWT auth
+- bcrypt password hashing
+- CRUD APIs
+- Filters
+- Search
+- Pagination
+- CSV export
+- Role-based access
+- Docker setup
+- Responsive UI
+- Deployment
+- README
+- `.env.example`
 
-If I were presenting this for an internship, I would describe it as a practical sales workflow dashboard built to show ownership across product design, API development, frontend implementation, and deployment readiness.
+## Notes
+
+- The backend supports MongoDB Atlas for production use.
+- Local development can still be configured separately based on your environment.
+- Admin-only delete access is enforced on protected lead routes.

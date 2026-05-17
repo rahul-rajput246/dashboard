@@ -21,7 +21,7 @@ const sanitizeUser = (user: {
 });
 
 export const registerUser = asyncHandler(async (req: Request, res: Response) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
@@ -34,7 +34,7 @@ export const registerUser = asyncHandler(async (req: Request, res: Response) => 
     name,
     email,
     password: hashedPassword,
-    role: "sales",
+    role: role || "sales",
   });
 
   res.status(201).json({

@@ -9,18 +9,23 @@ interface RegisterForm {
   name: string;
   email: string;
   password: string;
+  role: "admin" | "sales";
 }
 
 const RegisterPage = () => {
   const navigate = useNavigate();
   const setAuth = useAuthStore((state) => state.setAuth);
-  const { register, handleSubmit, formState } = useForm<RegisterForm>();
+  const { register, handleSubmit, formState } = useForm<RegisterForm>({
+    defaultValues: {
+      role: "sales",
+    },
+  });
 
  return (
   <AuthShell
     title="Create your Smart Leads workspace."
     subtitle="Register a sales account, access the dashboard instantly, and manage your pipeline through a modern CRM-inspired experience."
-    accent="All newly registered accounts are automatically assigned the sales role."
+    accent="Choose the role you want to use for this demo workspace."
   >
     <div className="relative w-full max-w-md overflow-hidden rounded-[32px] border border-white/70 bg-white p-5 shadow-[0_15px_60px_rgba(0,0,0,0.08)] sm:p-7">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(196,181,253,0.18),transparent_18%),radial-gradient(circle_at_bottom_left,rgba(165,243,252,0.14),transparent_20%)]" />
@@ -50,11 +55,10 @@ const RegisterPage = () => {
           </p>
 
           <p className="mt-2 text-sm leading-6 text-slate-700">
-            Every newly created account is assigned the{" "}
-            <span className="font-semibold text-violet-700">
-              sales
-            </span>{" "}
-            role by default.
+            You can create either a{" "}
+            <span className="font-semibold text-violet-700">sales</span> account
+            or an <span className="font-semibold text-violet-700">admin</span>{" "}
+            account to match the assignment flow.
           </p>
         </div>
 
@@ -119,6 +123,20 @@ const RegisterPage = () => {
               placeholder="Create a secure password"
               type="password"
             />
+          </div>
+
+          <div>
+            <label className="mb-2 block text-sm font-medium text-slate-700">
+              Role
+            </label>
+
+            <select
+              {...register("role", { required: true })}
+              className="h-14 w-full rounded-2xl border border-slate-200 bg-white/90 px-4 text-sm text-slate-800 shadow-sm outline-none transition-all duration-200 focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+            >
+              <option value="sales">Sales</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
 
           {/* PASSWORD NOTE */}

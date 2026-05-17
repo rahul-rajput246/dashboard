@@ -10,6 +10,7 @@ export const register = async (payload: {
   name: string;
   email: string;
   password: string;
+  role: "admin" | "sales";
 }) => {
   const { data } = await api.post<AuthResponse>("/auth/register", payload);
   return data;
