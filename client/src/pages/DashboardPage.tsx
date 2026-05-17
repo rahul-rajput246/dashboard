@@ -266,7 +266,7 @@ const DashboardPage = () => {
 
         {/* FILTER BAR */}
         <div className="relative mt-6">
-          <div className="rounded-[24px] border border-white/70 bg-white/60 p-3 shadow-lg backdrop-blur-xl sm:p-4">
+          <div className="rounded-[24px] border border-white/70 bg-white/60 shadow-lg backdrop-blur-xl">
             <FilterBar
               filters={filters}
               onFilterChange={handleFilterChange}
@@ -277,7 +277,7 @@ const DashboardPage = () => {
         </div>
 
         {/* TABLE */}
-       <div className="relative mt-6 overflow-hidden rounded-[28px] border border-white/70 bg-white/60 p-2 shadow-[0_10px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl sm:p-4">
+       <div className="relative mt-6 overflow-hidden rounded-[28px] border border-white/70 bg-white/60 shadow-[0_10px_40px_rgba(0,0,0,0.05)] backdrop-blur-xl">
           {loading ? (
             <LoadingBlock />
           ) : leads.length === 0 ? (
