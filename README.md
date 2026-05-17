@@ -1,75 +1,108 @@
 # Smart Leads Dashboard
 
-A complete MERN assignment build with:
+Smart Leads Dashboard is a full-stack lead management application built with the MERN ecosystem. I designed it as the kind of internship project I would want to submit: practical, cleanly structured, and focused on solving a real business workflow instead of only showcasing UI.
 
-- React + Vite + TypeScript + TailwindCSS frontend
-- Node.js + Express + TypeScript backend
-- MongoDB via `MONGO_URI`, plus a memory-server fallback for local development
-- JWT authentication with bcrypt password hashing
-- Role-based lead management with admin-only delete
-- Search, filters, sort, pagination, CSV export, modals, loading states, and responsive UI
+The app helps a small sales team manage incoming leads, track pipeline status, search and filter records quickly, and export data when needed. It includes authentication, role-based permissions, responsive design, and deployment-ready configuration for modern hosting platforms.
+
+## Why I Built This
+
+For an internship-level project, I wanted something that demonstrates more than CRUD screens. This project highlights:
+
+- full-stack product thinking from database to UI
+- authentication and authorization
+- clean API design with validation and error handling
+- responsive frontend development
+- deployment awareness with Docker, Render, and Vercel support
+
+## Highlights
+
+- JWT-based authentication with protected routes
+- role-based access control with admin-only delete
+- create, edit, view, and manage sales leads
+- debounced search by name or email
+- filter by lead status and source
+- sort by latest or oldest
+- pagination for scalable browsing
+- CSV export for reporting and handoff workflows
+- MongoDB support with an in-memory fallback for local development
+- responsive dashboard experience for desktop and mobile
+
+## Tech Stack
+
+### Frontend
+
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- Zustand
+- React Hook Form
+- Axios
+
+### Backend
+
+- Node.js
+- Express
+- TypeScript
+- MongoDB with Mongoose
+- JWT
+- bcrypt
+- express-validator
 
 ## Project Structure
 
 ```text
-smart-leads-dashboard/
-├── client/
-├── server/
-├── docker-compose.yml
-└── README.md
+dashboard/
+|-- client/   # React frontend
+|-- server/   # Express backend
+|-- docker-compose.yml
+|-- render.yaml
+`-- README.md
 ```
 
-## Features
+## Core Features
 
-- Login and registration
+### Authentication
+
+- user registration and login
 - JWT-protected API routes
-- Default seeded admin user for local testing
-- Create, read, update, and delete leads
-- Debounced search by lead name or email
-- Filter by status and source
-- Sort by latest or oldest
-- Pagination
+- persisted auth flow for dashboard access
+
+### Lead Management
+
+- add new leads
+- edit existing leads
+- delete leads as admin
+- track lead status and source
+
+### Productivity Features
+
+- debounced search
+- filtering and sorting
+- paginated listing
 - CSV export
-- Responsive dashboard layout for desktop and mobile
-- Docker support
 
-## Default Admin
+## API Overview
 
-When the backend starts, it seeds this admin user if it does not already exist:
+### Auth Routes
 
-- Email: `admin@smartleads.local`
-- Password: `Admin@123`
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/auth/me`
 
-You can change these values in `server/.env`.
+### Lead Routes
 
-## Environment Variables
+- `GET /api/leads`
+- `GET /api/leads/:id`
+- `POST /api/leads`
+- `PUT /api/leads/:id`
+- `DELETE /api/leads/:id`
 
-Create these files before running:
+### Health Route
 
-### `server/.env`
+- `GET /api/health`
 
-```env
-PORT=5000
-MONGO_URI=
-JWT_SECRET=replace-this-with-a-secure-secret
-ADMIN_NAME=Admin User
-ADMIN_EMAIL=admin@smartleads.local
-ADMIN_PASSWORD=Admin@123
-CLIENT_URL=http://localhost:5173
-```
-
-Notes:
-
-- Leave `MONGO_URI` empty to use the built-in memory Mongo server locally.
-- Add a real MongoDB Atlas URI if you want persistent cloud-backed storage.
-
-### `client/.env`
-
-```env
-VITE_API_URL=http://localhost:5000/api
-```
-
-## Installation
+## Local Setup
 
 ### 1. Install dependencies
 
@@ -78,49 +111,52 @@ npm --prefix server install
 npm --prefix client install
 ```
 
-### 2. Start backend
+### 2. Create environment files
+
+Create `server/.env`:
+
+```env
+PORT=5000
+MONGO_URI=mongodb+srv://rahulrajput20112005_db_user:SmartLeads12345@cluster0.dcxhfyz.mongodb.net/smartleads?
+JWT_SECRET=your_jwt_secret_here
+ADMIN_NAME=Admin User
+ADMIN_EMAIL=admin@smartleads.local
+ADMIN_PASSWORD=Rahul@2005
+CLIENT_URL=https://dashboard-omega-bice-60.vercel.app/
+```
+
+Create `client/.env`:
+
+```env
+VITE_API_URL=https://smart-leads-dashboard-api.onrender.com/api
+```
+
+Notes:
+
+- if `MONGO_URI` is empty, the backend uses `mongodb-memory-server` for local development
+- for persistent data, use a real MongoDB connection string
+
+### 3. Run the backend
 
 ```bash
 npm --prefix server run dev
 ```
 
-### 3. Start frontend
+### 4. Run the frontend
 
 ```bash
 npm --prefix client run dev
 ```
 
-Frontend runs at `http://localhost:5173` and backend runs at `http://localhost:5000`.
+Live App URLs:
 
-## API Routes
+- frontend: `https://dashboard-omega-bice-60.vercel.app/`
+- backend: `https://smart-leads-dashboard-api.onrender.com`
 
-### Auth
+Local Host App URLs:
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/auth/me`
-
-### Leads
-
-- `GET /api/leads`
-- `GET /api/leads/:id`
-- `POST /api/leads`
-- `PUT /api/leads/:id`
-- `DELETE /api/leads/:id` (admin only)
-
-## Docker
-
-### Run with Docker Compose
-
-```bash
-docker compose up --build
-```
-
-This starts:
-
-- MongoDB on `27017`
-- Backend on `5000`
-- Frontend on `5173`
+- frontend: `http://localhost:5173`
+- backend: `http://localhost:5000`
 
 ## Build
 
@@ -128,94 +164,41 @@ This starts:
 npm run build
 ```
 
-## Deploy to Render + Vercel
+## Docker
 
-This repo is prepared for:
+To run the full stack with Docker:
 
-- Backend on Render
-- Frontend on Vercel
-
-Current docs I aligned with:
-
-- Render Node/Express deploy docs: https://render.com/docs/deploy-node-express-app
-- Render Blueprint reference: https://render.com/docs/blueprint-spec
-- Render monorepo support: https://render.com/docs/monorepo-support
-- Render health checks: https://render.com/docs/health-checks
-- Vite on Vercel: https://vercel.com/docs/frameworks/frontend/vite
-- Vercel environment variables: https://vercel.com/docs/projects/environment-variables
-- Vercel rewrites: https://vercel.com/docs/rewrites
-
-### 1. Deploy backend to Render
-
-This repo includes [render.yaml](/c:/Users/Dell/dashboard/render.yaml), so the easiest path is:
-
-1. Push this repo to GitHub.
-2. In Render, click `New` -> `Blueprint`.
-3. Connect the repo and deploy the blueprint.
-
-Render will use:
-
-- Root Directory: `server`
-- Build Command: `npm install && npm run build`
-- Start Command: `npm start`
-- Health Check Path: `/api/health`
-
-Before the first production deploy, set these environment variables in Render:
-
-- `MONGO_URI`
-- `ADMIN_PASSWORD`
-- `CLIENT_URL`
-
-Render will auto-generate:
-
-- `JWT_SECRET`
-
-Recommended values:
-
-- `MONGO_URI`: your MongoDB Atlas connection string
-- `ADMIN_PASSWORD`: a strong admin password
-- `CLIENT_URL`: your Vercel production domain, such as `https://your-app.vercel.app`
-
-Optional:
-
-- `CLIENT_URLS`: comma-separated extra domains if you add a custom domain later
-- `ALLOW_VERCEL_PREVIEWS=true`: keeps Vercel preview deployments working without adding each preview URL manually
-
-### 2. Deploy frontend to Vercel
-
-For Vercel:
-
-1. Import the same GitHub repo.
-2. Set `Root Directory` to `client`.
-3. Let Vercel detect the framework as `Vite`.
-4. Add this environment variable:
-
-```env
-VITE_API_URL=https://your-render-service.onrender.com/api
+```bash
+docker compose up --build
 ```
 
-This repo also includes [client/vercel.json](/c:/Users/Dell/dashboard/client/vercel.json) so React Router routes like `/login` and `/register` resolve correctly on refresh.
+## Deployment
 
-### 3. Connect frontend and backend
+This repository is structured for:
 
-After Vercel gives you your production URL:
+- frontend deployment on Vercel
+- backend deployment on Render
 
-1. Copy the frontend domain, for example `https://your-app.vercel.app`
-2. In Render, set:
+The included [render.yaml](/C:/Users/Dell/dashboard/render.yaml) and [client/vercel.json](/C:/Users/Dell/dashboard/client/vercel.json) help streamline deployment.
 
-```env
-CLIENT_URL=https://your-app.vercel.app
-```
+## What This Project Demonstrates
 
-3. Redeploy the Render backend
+From an internship perspective, this project shows that I can:
 
-If you keep `ALLOW_VERCEL_PREVIEWS=true`, preview deployments from Vercel will also be accepted by backend CORS.
+- build a complete full-stack application
+- organize code into maintainable frontend and backend layers
+- handle auth, validation, and role-based permissions
+- think about developer experience and deployment early
+- ship a product that is both functional and presentable
 
-### 4. Production checklist
+## Future Improvements
 
-- Use MongoDB Atlas instead of the memory server
-- Change `ADMIN_PASSWORD`
-- Confirm `JWT_SECRET` exists in Render
-- Confirm Render health check passes at `/api/health`
-- Confirm `VITE_API_URL` points to your Render backend
-- Test login, register, create lead, edit lead, delete lead, filters, pagination, and CSV export
+- analytics widgets for conversion tracking
+- activity history for lead updates
+- unit and integration test coverage
+- bulk lead import
+- team assignment workflows
+
+## Closing Note
+
+If I were presenting this for an internship, I would describe it as a practical sales workflow dashboard built to show ownership across product design, API development, frontend implementation, and deployment readiness.

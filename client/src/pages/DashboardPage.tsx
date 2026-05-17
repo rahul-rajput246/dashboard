@@ -296,7 +296,7 @@ const DashboardPage = () => {
         </div>
 
         {/* PAGINATION */}
-        <div className="relative mt-6 flex justify-center">
+        <div className="relative mt-6">
           <Pagination
             currentPage={filters.page}
             totalPages={totalPages}
